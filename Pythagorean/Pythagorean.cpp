@@ -28,16 +28,19 @@ int main(int size, char* args[]){
     int found(0);
     Bitmap black("black.bmp", max, max);
         black.fill(0);
-    for(int hyp = 1; hyp <= max; hyp++){
+    for(int hyp = 1; hyp <= max * 2; hyp++){
         for(int a = 1; a < hyp; ++a){
             for(int b = 1; b < a; ++b){
                 if(a * a + b * b == hyp * hyp ){
                     cout << "[ "<< b << ", " << a << ", " << hyp <<"]" << endl;
-                    float re = 255 * (float)a / hyp;
-                    float gr = 255 * (float)b / hyp;
-                    float bl = 255 * (float)hyp / max;
-                    black.add(a, b, re, gr, bl);
-                    black.add(b, a, gr, re, bl);
+                    if(a < max){
+                        float re = 255 * (float)a / hyp;
+                        float gr = 255 * (float)b / hyp;
+                        float bl = 255 * (float)hyp / max;
+                    
+                        black.add(a, b, re, gr, bl);
+                        black.add(b, a, gr, re, bl);
+                    }
                     ++found;
                 }
             }
@@ -47,9 +50,3 @@ int main(int size, char* args[]){
     
 
 }
-
-
-
-
-
-
