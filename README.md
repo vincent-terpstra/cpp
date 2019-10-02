@@ -1,5 +1,4 @@
-# CPlusPlus
-Simple functions coded in c++
+Simple functions coded in C++
 # Julia Sets
 ![](juliaEDT.gif)
 
