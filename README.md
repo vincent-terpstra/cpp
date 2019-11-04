@@ -11,5 +11,6 @@ All pythagorean triples with hypoteneuse less then 1000
 
 # Number Spirals
 Plotting polar coordinates of (n,n)
+Colors are math
 
 ![](NumberSpiral/spiral.bmp)
