@@ -2,7 +2,7 @@
  * Vincent Terpstra
  * 3 November 2019
  * 
- * A program that draws all primes in a spiral
+ * A program that draws all numbers in polar coordinates
  * 
  * g++ *.cpp ../Bitmap.cpp -std=c++17 && ./a.out
  */

@@ -12,8 +12,9 @@
 using namespace std;
 #define SIZE 10
 class Point {
-    int x;
-    int y;
+        int x;
+        int y;
+
     public:
     Point(int _x, int _y) : x(_x), y(_y) {}
 

@@ -38,15 +38,14 @@ int main(int size, char* args[]){
                         float gr = 255 * (float)b / hyp;
                         float bl = 255 * (float)hyp / max;
                     
-                        black.add(a, b, re, gr, bl);
-                        black.add(b, a, gr, re, bl);
+                        black.add(a-1, b-1, re, gr, bl);
+                        black.add(b-1, a-1, gr, re, bl);
                     }
                     ++found;
                 }
             }
         }
     }
-    cout << found << " triples found!" << endl;
-    
 
+    cout << found << " triples found!" << endl;
 }

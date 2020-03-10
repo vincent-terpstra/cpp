@@ -10,7 +10,8 @@ void generateBitmapImage(unsigned char *image, int height, int width, const char
 unsigned char* createBitmapFileHeader(int height, int width, int paddingSize);
 unsigned char* createBitmapInfoHeader(int height, int width);
 
-Bitmap::Bitmap(const char * filename, int width, int height) : width(width), height(height){
+Bitmap::Bitmap(const char * filename, int width, int height) : 
+    width(width), height(height), size( height * width * bytesPerPixel) {
     this->filename = filename;
     image = new unsigned char[height * width *bytesPerPixel];
 }
@@ -27,7 +28,6 @@ Bitmap::~Bitmap(){
 }
 
 void Bitmap::fill(float clr){
-    int size = height * width * bytesPerPixel;
     while(idx < size ){ //fill remainder of image
         image[idx++] = clr;
     }
@@ -38,11 +38,13 @@ void Bitmap::fill(float clr){
  * FILL SHOULD BE CALLED FIRST
  */
 void Bitmap::add(int x, int y, float r, float g, float b){
-    int tmp = (--x * width + --y) * bytesPerPixel;
-
-    image[tmp] = b;
-    image[tmp+1] = g;
-    image[tmp+2] = r;
+    if(x < 0 || y < 0) return;
+    int tmp = (x * width + y) * bytesPerPixel;
+    if(tmp < size){
+        image[tmp] = b;
+        image[tmp+1] = g;
+        image[tmp+2] = r;
+    }
 
 }
 

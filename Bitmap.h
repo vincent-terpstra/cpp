@@ -8,6 +8,7 @@ class Bitmap {
     public:
         const int height;
         const int width;
+        const int size;
         Bitmap(const char * filename, const int height, const int width);
 
         ~Bitmap();
