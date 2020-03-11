@@ -15,15 +15,21 @@ bool isMatch(string str, string pat, int sIdx, int pIdx){
     if(pIdx + 1 < pat.length() && pat[pIdx + 1] == '*'){
         //WILD FOUND
         //can match ZERO characters
-        if(isMatch(str, pat, sIdx, pIdx + 2))
-            return true;
-
         char last = pat[pIdx];
-        //can match Multiple characters
-        if(last == '.' || last == str[sIdx])
-            return isMatch(str, pat, sIdx + 1, pIdx);
+        if(pIdx + 3 < pat.length() && last == pat[pIdx + 2] && pat[pIdx + 3] == '*'){
+            return isMatch(str, pat, sIdx, pIdx + 2);
+        } else {
+            if(isMatch(str, pat, sIdx, pIdx + 2))
+                    return true;
+
+            while( sIdx < str.length() && (last == '.' || str[sIdx] == last)){
+                if( isMatch(str, pat, sIdx + 1, pIdx + 2))
+                    return true;
+                sIdx++;
+            }
+        }
         
-    } else if(str[sIdx] == pat[pIdx] || pat[pIdx] == '.'){
+    } else if(sIdx < str.length() && (str[sIdx] == pat[pIdx] || pat[pIdx] == '.')){
         return isMatch(str, pat, sIdx + 1, pIdx + 1);
     }
 
@@ -38,12 +44,19 @@ bool isMatch(string s, string p){
 }
 
 int main(){
+    isMatch("aab", "c*a*b");
+    /**/
+    isMatch("ab", ".*c");
     isMatch("abc", ".bc");
     isMatch("dog", "dog");
     isMatch("aaaa", "a*");
     isMatch("abcde", "a.*e");
     isMatch("abc", "g*abc");
     isMatch("vincent", ".*");
+    isMatch("aaaaaaaaaaaab", "a*a*a*a*a*a*a*c");
+    isMatch("baaaaaaaaaaaa", "ca*a*a*a*a*a*a*");
+    isMatch("aaaaaaaaaaaa", "a*a*a*a*a*a*a*");
+    /**/
 
 
     return 1;

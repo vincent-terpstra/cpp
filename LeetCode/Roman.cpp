@@ -8,8 +8,6 @@
 
 using namespace std;
 
-
-
 int romanToInt(string s){
     int sum(0);
     char last(' ');
