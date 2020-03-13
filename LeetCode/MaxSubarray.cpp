@@ -4,7 +4,7 @@
 using namespace std;
 
 int maxSubArray(vector<int>& nums) {
-     int maxVal = nums[0];
+    int maxVal = nums[0];
     int runSum = maxVal;
     
     for_each(++begin(nums), end(nums),
